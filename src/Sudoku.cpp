@@ -1,4 +1,5 @@
 #include <Sudoku.hpp>
+#include <algorithm>
 #include <fstream>
 #include <iostream>
 #include <queue>
@@ -341,7 +342,7 @@ std::vector<int> SudokuCSP::orderValues(const Domains& domains, const int variab
         return eliminated;
     };
 
-    std::ranges::stable_sort(values,[&](const int a, const int b) {
+    std::stable_sort(values.begin(), values.end(), [&](const int a, const int b) {
         return impact(a) < impact(b);
     });
 
